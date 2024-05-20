@@ -7,6 +7,7 @@ import Loan from './pages/Loan'
 import Transactions from './pages/Transactions'
 import AplayLoan from './pages/AplayLoan'
 import AplayNewCard from './pages/AplayNewCard'
+import Layout from './layouts/layout'
 
 
 
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Layout>
     <Routes>
       <Route path='/' element={<Accounts/>} /> 
       <Route path='/Card' element={<Card/>} />
@@ -23,6 +25,7 @@ function App() {
       <Route path='/AplayLoan' element={<AplayLoan/>} />
       <Route path='/AplayNewCard' element={<AplayNewCard/>} />
     </Routes>
+    </Layout>
     </BrowserRouter>
   )
 }
