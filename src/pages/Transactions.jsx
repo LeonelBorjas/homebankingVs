@@ -1,11 +1,14 @@
 import React from 'react'
+import MainTransactions from '../Components/MainTransactions'
 
 
 const Transactions = () => {
   return (
-    <>
-      <main></main>
-    </>
+    <body>
+      <main>
+        <MainTransactions/>
+      </main>
+    </body>
   )
 }
 

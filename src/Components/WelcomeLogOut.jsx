@@ -3,24 +3,24 @@ import React, { useState, useEffect } from 'react';
 
 const WelcomeLogOut = () => {
 
-    const [client, setClient] = useState([])
-    const [loading, setLoading] = useState(false);
+    const [client, setClient] = useState([]) // Estado para almacenar los datos del cliente
+    const [loading, setLoading] = useState(false); // Estado para indicar si la carga está en progreso  
     const [error, setError] = useState(null); // Variable de estado para almacenar los errores
 
-    useEffect(() => {  //Peticion
-        const fetchAccounts = async () => {
+    useEffect(() => {  //Peticion // Efecto secundario que se ejecuta cuando el componente se monta
+        const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/1');
+                const response = await axios.get('http://localhost:8080/api/clients/1')  // Realizar la solicitud GET a la API para obtener los datos del cliente
                 console.log(response)
-                 setClient(response.data)   
+                setClient(response.data)  // Actualizar el estado del cliente con los datos recibidos   
             } catch (err) {
-                console.error('Error fetching data: ', err); // Capturar y mostrar el error en la consola
-                setError(err.message);
+                console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
+                setError(err.message) // Actualizar el estado de error con el mensaje de error
             }
         };
 
         fetchAccounts(); // Llamar a la función fetchAccounts cuando el componente se monte
-    }, []);
+    }, []); // Useefect  es un array de dependencias, lo que significa que este efecto solo se ejecutará una vez, cuando el componente se monte
 
     if (loading) {
         return (

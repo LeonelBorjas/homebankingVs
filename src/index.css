@@ -89,5 +89,37 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.article-bg {
+  background-image: url('public/assets/img/login-img.jpg');
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+  background-position: center; /* Centra la imagen en el fondo */
+}
+
+.article-bgg {
+  background-image: url('public/assets/img/register-logo.jpeg');
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+  background-position: center; /* Centra la imagen en el fondo */
+}
+
+.article-transaction {
+  background-image: url('public/assets/img/banner-transaction.jpg');
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+  background-position: center; /* Centra la imagen en el fondo */
+}
+
+.article-content {
+  background-color: rgba(12, 12, 12, 0.9); /* Color de fondo negro con transparencia */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
 
 

@@ -6,29 +6,31 @@ import React, { useState, useEffect } from 'react';
 import AccountInfo from './AccountInfo';
 
 const MainAccounts = () => {
-    const [accounts, setAccounts] = useState([]); //Estado inicial Vacio
-    const [client, setClient] = useState([])
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null); // Variable de estado para almacenar los errores
+    const [accounts, setAccounts] = useState([]) // Estado para almacenar los datos de las cuentas bancarias (inicialmente vacío)
+    const [client, setClient] = useState([]) // Estado para almacenar los datos del cliente (inicialmente vacío)
+    const [loading, setLoading] = useState(false) // Estado para indicar si la carga está en progreso (inicialmente falso)
+    const [error, setError] = useState(null) // Variable de estado para almacenar los errores
 
-    useEffect(() => {  //Peticion
-        const fetchAccounts = async () => {
+    useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
+        const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/1');
-                console.log(response.data)
-                console.log(response.data.accounts)
-                setClient(response.data)
-                setAccounts(response.data.accounts); // Capturar el JSON en la variable de estado accounts
+                const response = await axios.get('http://localhost:8080/api/clients/1') // Realizar la solicitud GET a la API para obtener los datos del cliente y sus cuentas bancarias
+                console.log(response.data) // Mostrar la respuesta en la consola
+                console.log(response.data.accounts) // Mostrar las cuentas  en la consola
+                setClient(response.data) // Actualizar el estado del cliente con los datos recibidos
+                setAccounts(response.data.accounts) // Capturar el JSON en la variable de estado accounts
             } catch (err) {
-                console.error('Error fetching data: ', err); // Capturar y mostrar el error en la consola
-                setError(err.message);
+                console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
+                setError(err.message)
             }
         };
 
-        fetchAccounts(); // Llamar a la función fetchAccounts cuando el componente se monte
-    }, []);
+        fetchAccounts() // Llamar a la función fetchAccounts cuando el componente se monte
+    }, []) // Es un array de dependencias  
 
-    if (loading) {
+    useEffect(() => (console.log("wao")), [loading] )
+
+    if (loading) { // Condición para mostrar un mensaje de carga mientras se está realizando la solicitud HTTP
         return (
             <div className='w-full text-center'>
                 <h1>Loading</h1>
@@ -43,7 +45,7 @@ const MainAccounts = () => {
             <div className='h-full w-full flex flex-col justify-center items-center'>
                 <div className='flex flex-wrap justify-around items-center gap-8 my-4'>
                     <div>
-                        <ButtonNewAccount text="CREATE NEW CARD" />
+                        <ButtonNewAccount text="CREATE NEW ACCOUNT" />
                     </div>
                     {
                         accounts.map((account, id) => {
