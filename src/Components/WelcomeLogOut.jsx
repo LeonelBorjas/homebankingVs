@@ -1,8 +1,29 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../redux/acciones/authActions'
+import { useNavigate } from 'react-router-dom'
+import { Bounce, ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const WelcomeLogOut = () => {
 
+    const successLogout = ( ) => {
+    toast.success('You have logged out, see you soon.', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });
+    }
+    const navigate = useNavigate();
+    const token = useSelector(store => store.authReducer.token)
+    const dispatch = useDispatch()
     const [client, setClient] = useState([]) // Estado para almacenar los datos del cliente
     const [loading, setLoading] = useState(false); // Estado para indicar si la carga está en progreso  
     const [error, setError] = useState(null); // Variable de estado para almacenar los errores
@@ -10,8 +31,12 @@ const WelcomeLogOut = () => {
     useEffect(() => {  //Peticion // Efecto secundario que se ejecuta cuando el componente se monta
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/1')  // Realizar la solicitud GET a la API para obtener los datos del cliente
-                console.log(response)
+                const response = await axios.get('http://localhost:8080/api/auth/current', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })  // Realizar la solicitud GET a la API para obtener los datos del cliente
+                console.log(response.data)
                 setClient(response.data)  // Actualizar el estado del cliente con los datos recibidos   
             } catch (err) {
                 console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
@@ -29,7 +54,11 @@ const WelcomeLogOut = () => {
             </div>
         );
     }
-
+    const handleLogout = () => {
+        dispatch(logout())
+        navigate("/login")
+        successLogout()
+    }
 
 return (
     <div className='h-full w-full p-2 flex justify-evenly md:justify-center items-center gap-2 bg-black'>
@@ -40,7 +69,7 @@ return (
             <h1 className='grow text-white font-bold'>Welcome, {client.firstName + " " +  client.lastName}</h1>
         </div>
         <article className='w-20 h-full rounded-full object-cover flex items-center justify-center md:self-right cursor-pointer bg-red-500 border border-red-600'>
-            <h3 className='w-full text-center text-white text-sm font-bold'>Log out</h3>
+            <p onClick={handleLogout} className='w-full text-center text-white text-sm font-bold'>Log out</p>
         </article>
     </div>
 )

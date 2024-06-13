@@ -4,11 +4,11 @@ import MainTransactions from '../Components/MainTransactions'
 
 const Transactions = () => {
   return (
-    <body>
+    <div>
       <main>
         <MainTransactions/>
       </main>
-    </body>
+    </div>
   )
 }
 

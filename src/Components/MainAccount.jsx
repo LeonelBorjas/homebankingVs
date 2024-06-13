@@ -2,10 +2,14 @@
 import ButtonNewAccount from './ButtonNewAccount'
 import Banner from './Banner'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react';
-import AccountInfo from './AccountInfo';
+import React, { useState, useEffect } from 'react'
+import AccountInfo from './AccountInfo'
+import { useSelector } from 'react-redux'
+
 
 const MainAccounts = () => {
+    const token = useSelector(store => store.authReducer.token)
+
     const [accounts, setAccounts] = useState([]) // Estado para almacenar los datos de las cuentas bancarias (inicialmente vacío)
     const [client, setClient] = useState([]) // Estado para almacenar los datos del cliente (inicialmente vacío)
     const [loading, setLoading] = useState(false) // Estado para indicar si la carga está en progreso (inicialmente falso)
@@ -14,11 +18,13 @@ const MainAccounts = () => {
     useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/1') // Realizar la solicitud GET a la API para obtener los datos del cliente y sus cuentas bancarias
+                const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }) // Realizar la solicitud GET a la API para obtener los datos del cliente y sus cuentas bancarias
                 console.log(response.data) // Mostrar la respuesta en la consola
-                console.log(response.data.accounts) // Mostrar las cuentas  en la consola
-                setClient(response.data) // Actualizar el estado del cliente con los datos recibidos
-                setAccounts(response.data.accounts) // Capturar el JSON en la variable de estado accounts
+                setAccounts(response.data) // Actualizar el estado del cliente con los datos recibidos
             } catch (err) {
                 console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
                 setError(err.message)

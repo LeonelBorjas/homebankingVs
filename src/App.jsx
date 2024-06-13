@@ -10,26 +10,30 @@ import AplayNewCard from './pages/AplayNewCard'
 import Layout from './layouts/layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      {/* <Routes>
-        <Route path='/Login' element={<Login />} />
-        <Route path='/Register' element={<Register />} />
-      </Routes> */}
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Accounts />} />
-          <Route path='/Card' element={<Card />} />
-          <Route path='/Loans' element={<Loan />} />
-          <Route path='/Transactions' element={<Transactions />} />
-          <Route path='/AplayLoan' element={<AplayLoan />} />
-          <Route path='/AplayNewCard' element={<AplayNewCard />} />
-        </Routes>
-      </Layout>
+<BrowserRouter>
+      <Routes>
+        {/* Rutas para Login y Register */}
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+
+        {/* Rutas que usan el layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Accounts />} />
+          <Route path="Card" element={<Card />} />
+          <Route path="Loans" element={<Loan />} />
+          <Route path="Transactions" element={<Transactions />} />
+          <Route path="AplayLoan" element={<AplayLoan />} />
+          <Route path="AplayNewCard" element={<AplayNewCard />} />
+        </Route>
+      </Routes>
+      <ToastContainer/>
     </BrowserRouter>
   )
 }
