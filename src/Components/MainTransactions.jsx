@@ -123,13 +123,13 @@ const MainTransactions = () => {
                     <select 
                         name="account" 
                         id="account-select" 
-                        className='text-center h-8 w-1/4 focus-visible:ring-gray-700 text-sm  rounded-md bg-slate-900 ml-2 '
+                        className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2 '
                         value={selectedAccount}
                         onChange={handleAccountChange}
                     >
                     <option disabled hidden value="">Select Account</option>
                     {client.map(account => (
-                        <option key={account.number} value={account.number}>
+                        <option className='' key={account.number} value={account.number}>
                             {account.number}
                         </option>
                     ))}
@@ -137,15 +137,15 @@ const MainTransactions = () => {
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Destination Account:</strong>
-                        <input className='text-center w-1/4 focus-visible:ring-gray-700 text-sm h-8  rounded-md bg-slate-900 ml-2 ' type="text" placeholder='Enter your destination account' value={destinationAccount}  onChange={handleDestinationAccountChange} required />
+                        <input className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Enter your destination account' value={destinationAccount}  onChange={handleDestinationAccountChange} required />
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Amount :</strong>
-                        <input className='text-center w-1/4 focus-visible:ring-gray-700 text-sm h-8  rounded-md bg-slate-900 ml-2 ' required type="number" placeholder='Enter your amount $:' min="0" value={amount}  onChange={handleAmountChange} />
+                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' required type="number" placeholder='Enter your amount $:' min="0" value={amount}  onChange={handleAmountChange} />
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Description :</strong>
-                        <input className='text-center w-1/4 focus-visible:ring-gray-700 text-sm h-8 rounded-md bg-slate-900 ml-2 ' type="text" placeholder='Description of transaction'  value={description}   onChange={handleDescriptionChange}  required />
+                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Description of transaction'  value={description}   onChange={handleDescriptionChange}  required />
                     </label>
                 </div>
                 <div className='mb-5'>

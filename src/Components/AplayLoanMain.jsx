@@ -137,9 +137,9 @@ const AplayLoanMain = () => {
     }
 
     return (
-        <div className=' font-sans bg-[#0C0C0C] bg-cover bg-no-repeat  '>
-            <div className='text-white w-full h-full flex items-center justify-center gap-10  '>
-                <section className=' w-80 h-full p-2 flex flex-col justify-around gap-10 items-center bg-[#263640] rounded-2xl'>
+        <div className=' article-aplyLoan font-sans bg-[#0C0C0C] bg-cover bg-no-repeat  '>
+            <div className='article-content text-white w-full h-full flex items-center justify-center gap-10  '>
+                <section className=' w-80 h-full p-2 flex flex-col justify-around gap-10 items-center bg-[#263640] rounded-2xl mb-5 mt-10'>
                     <div className='h-full'>
                         <div className='flex flex-col md:flex-row-reverse h-full text-center justify-center items-center gap-4'>
                             <form onSubmit={handleSubmit} className='flex flex-col gap-5 text-center items-center justify-center '>
@@ -213,9 +213,6 @@ const AplayLoanMain = () => {
                         </div>
                     </div>
                 </section>
-                <div className=' mb-5 '>
-                    <img className='w-[500px] h-auto' src="/public/assets/img/aplyLoan2.png" alt="pic_loan" />
-                </div>
             </div>
 
         </div>
