@@ -107,6 +107,13 @@ input[type="number"]::-webkit-outer-spin-button {
   background-position: center; /* Centra la imagen en el fondo */
 }
 
+.article-card {
+  background-image: url('public/assets/img/card-fond.png');
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+  background-position: center; /* Centra la imagen en el fondo */
+  
+}
+
 .article-content {
   background-color: rgba(12, 12, 12, 0.9); /* Color de fondo negro con transparencia */
   width: 100%;
@@ -117,6 +124,15 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 
+.article-content-card {
+  background-color: rgba(12, 12, 12, 0.9); /* Color de fondo negro con transparencia */
+  width: 100%;
+  min-height: 100vh; /* Establece la altura mínima para ocupar toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

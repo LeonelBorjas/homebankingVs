@@ -11,7 +11,8 @@ import Layout from './layouts/layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
+import AccountSelect from './pages/AccountSelect'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="Transactions" element={<Transactions />} />
           <Route path="AplayLoan" element={<AplayLoan />} />
           <Route path="AplayNewCard" element={<AplayNewCard />} />
+          <Route path='/AccountSelect/:id' element={<AccountSelect/>}/>
         </Route>
       </Routes>
       <ToastContainer/>

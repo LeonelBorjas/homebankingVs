@@ -77,9 +77,9 @@ const LoginMain = () => {
             mensajeSuccess()
         } catch (error) {
             console.error('Error:', error)
-            toast.error(mensajeError);
+            toast.error(mensajeError)
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
     }
 

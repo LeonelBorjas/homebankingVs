@@ -4,14 +4,14 @@ import RegisterMain from '../Components/RegisterMain'
 
 const Register = () => {
     return (
-        <body>
+        <div>
             <header>
                 <HeaderLogIn/>
             </header>
             <main>
                 <RegisterMain/>
             </main>
-        </body>
+        </div>
     )
 }
 

@@ -1,76 +1,106 @@
-
-import ButtonNewAccount from './ButtonNewAccount'
 import Banner from './Banner'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import AccountInfo from './AccountInfo'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { ToastContainer, toast, Bounce } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const MainAccounts = () => {
     const token = useSelector(store => store.authReducer.token)
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [accounts, setAccounts] = useState([]) // Estado para almacenar los datos de las cuentas bancarias (inicialmente vacío)
-    const [client, setClient] = useState([]) // Estado para almacenar los datos del cliente (inicialmente vacío)
     const [loading, setLoading] = useState(false) // Estado para indicar si la carga está en progreso (inicialmente falso)
     const [error, setError] = useState(null) // Variable de estado para almacenar los errores
 
-    useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
-        const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
-            try {
-                const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }) // Realizar la solicitud GET a la API para obtener los datos del cliente y sus cuentas bancarias
-                console.log(response.data) // Mostrar la respuesta en la consola
-                setAccounts(response.data) // Actualizar el estado del cliente con los datos recibidos
-            } catch (err) {
-                console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
-                setError(err.message)
-            }
-        };
+    useEffect(() => {
+        fetchAccounts(); // Cargar cuentas cuando el componente se monte
+    }, []);
 
-        fetchAccounts() // Llamar a la función fetchAccounts cuando el componente se monte
-    }, []) // Es un array de dependencias  
-
-    useEffect(() => (console.log("wao")), [loading] )
-
-    if (loading) { // Condición para mostrar un mensaje de carga mientras se está realizando la solicitud HTTP
-        return (
-            <div className='w-full text-center'>
-                <h1>Loading</h1>
-            </div>
-        )
+    const fetchAccounts = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            setAccounts(response.data);
+        } catch (err) {
+            console.error('Error fetching data: ', err);
+            setError(err.message);
+        }
     }
 
-    return (
+    const handleCreateAccount = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/clients/current/account', {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            toast.success('New Account successful!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+                })
+            // Actualizar el estado local sin hacer una nueva solicitud GET
+            setAccounts(prevAccounts => [...prevAccounts, response.data]); // Suponiendo que response.data contiene los detalles de la nueva cuenta creada
 
+        } catch (err) {
+            console.error('Error creating account: ', err);
+            toast.error('You exceed the limit number of accounts created.', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+                })
+        }
+    }
+
+    const handleAccountClick = (accountId) => {
+        navigate(`/AccountSelect/${accountId}`)
+    }
+    
+
+    return (
         <div className='flex flex-col flex-grow  justify-around items-center bg-[#0C0C0C] h-full text-white'>
             <Banner banner="/public/assets/img/banner.png" />
             <div className='h-full w-full flex flex-col justify-center items-center'>
                 <div className='flex flex-wrap justify-around items-center gap-8 my-4'>
                     <div>
-                        <ButtonNewAccount text="CREATE NEW ACCOUNT" />
+                        <button type='button' onClick={handleCreateAccount} className='rounded-md p-4 bg-gray-700 m-2 text-lg text-white cursor-pointer transition duration-200 ease-in-out hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95'>CREATE NEW ACCOUNT</button>
                     </div>
-                    {
-                        accounts.map((account, id) => {
-                            return (
-                                <a key={id} href="#" className='flex flex-col justify-center items-center'>
-                                    <AccountInfo number={account.number} balance={account.balance} creationDate={account.creationDate} />
-                                </a>
-                            )
-                        })
-                    }
-
+                    {accounts.map((account, id) => (
+                        <div
+                            key={id}
+                            onClick={() => handleAccountClick(account.id)}
+                            className='flex flex-col justify-center items-center cursor-pointer'>
+                            <AccountInfo number={account.number} balance={account.balance} creationDate={account.creationDate} />
+                        </div>
+                    ))}
                 </div>
+                <ToastContainer />
             </div>
         </div>
-
-    )
-}
+    );
+};
 
 export default MainAccounts
+
 
 
 
