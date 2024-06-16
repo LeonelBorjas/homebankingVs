@@ -84,7 +84,8 @@ const LoginMain = () => {
     }
 
 
-    return (<div className='flex flex-col md:flex-row h-[85vh] lg:h-[85vh] overflow-y-auto'>
+    return (
+    <div className='flex flex-col md:flex-row h-[100vh] lg:h-[100vh] md:h-[100vh] overflow-y-auto '>
         <article className='text-center md:w-1/2 h-full flex flex-col justify-center'>
             <h2 className='font-bold text-3xl mb-4'>Login to your account</h2>
             <form className='flex flex-col gap-8'>

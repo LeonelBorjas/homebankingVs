@@ -4,7 +4,7 @@ import HeaderNav from '../Components/HeaderNav'
 import Footer from '../Components/Footer'
 import { Outlet } from 'react-router-dom'
 
-const layout = ({ children }) => {
+const Layout = () => {
     return (
         <div>
             <WelcomeLogOut />
@@ -17,4 +17,4 @@ const layout = ({ children }) => {
     )
 }   
 
-export default layout
+export default Layout

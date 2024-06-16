@@ -6,6 +6,8 @@ import axios from 'axios'
 import { ToastContainer, toast, Bounce } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useSelector } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router-dom'
+
 
 const AplayLoanMain = () => {
     const token = useSelector(store => store.authReducer.token)
@@ -20,6 +22,8 @@ const AplayLoanMain = () => {
     const [destinationAccount, setDestinationAccount] = useState('')
     const [loanId, setLoanId] = useState(null)
     const [installments, setInstallments] = useState([])
+    const navigate = useNavigate()
+
 
     useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
@@ -107,7 +111,7 @@ const AplayLoanMain = () => {
 
             toast.success('Loan created successfully!', {
                 position: "top-center",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -133,6 +137,7 @@ const AplayLoanMain = () => {
             })
         } finally {
             setLoading(false)
+            navigate('/Loans')
         }
     }
 
@@ -147,7 +152,7 @@ const AplayLoanMain = () => {
                                     <label className=' '>
                                         <strong className='text-xl'> Choose Loan : </strong>
                                         <select onChange={handleLoanChange} required className='text-center text-sm rounded-md bg-slate-900 ml-2'>
-                                            <option disabled selected hidden value="0">Select Loan</option>
+                                            <option disabled selected hidden value="">Select Loan</option>
                                             {loans.map(loan => (
                                                 <option key={loan.id} value={loan.loanName}>
                                                     {loan.loanName}
@@ -160,7 +165,7 @@ const AplayLoanMain = () => {
                                     <label className=' '>
                                         <strong className='text-xl'>Choose Account :</strong>
                                         <select onChange={handleDestinationAccountChange} required className='text-center  focus-visible:ring-gray-700 text-sm  rounded-md bg-slate-900 ml-2'>
-                                            <option disabled selected hidden value="0">Select Account</option>
+                                            <option disabled selected hidden value="">Select Account</option>
                                             {client.map(account => (
                                                 <option key={account.number} value={account.number}>
                                                     {account.number}
@@ -174,7 +179,7 @@ const AplayLoanMain = () => {
                                         <strong className='text-xl'>Choose Payments :</strong>
                                         <div className="ml-2">
                                             <select onChange={handlePaymentsChange} required className='text-center text-sm rounded-md bg-slate-900'>
-                                                <option disabled selected hidden value="0">Select Payments</option>
+                                                <option disabled selected hidden value="">Select Payments</option>
                                                 {installments.map(payment => (
                                                     <option key={payment} value={payment}>
                                                         {payment}

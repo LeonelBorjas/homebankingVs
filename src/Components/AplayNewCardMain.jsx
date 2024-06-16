@@ -3,11 +3,13 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const AplayNewCardMain = () => {
     const token = useSelector(store => store.authReducer.token)
     const [cardType, setCardType] = useState('')
     const [cardColor, setCardColor] = useState('')
+    const navigate = useNavigate()
 
     const mensajeSuccess = () => {
         toast.success('Card created successfully!', {
@@ -24,7 +26,7 @@ const AplayNewCardMain = () => {
     }
 
     const mensajeError = () => {
-        toast.error('You exceed the maximum card limit', {
+        toast.error('You exceed the maximum card limit o card color for client', {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -55,6 +57,10 @@ const AplayNewCardMain = () => {
         } catch (error) {
             console.error('Error creating card:', error)
             toast.error(mensajeError)
+        } finally {
+            // Reset
+            setCardType('');
+            setCardColor('');
         }
     }
 

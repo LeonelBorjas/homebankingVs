@@ -83,7 +83,7 @@ const RegisterMain = () => {
     }
 
     return (
-<div className='flex flex-col md:flex-row h-[85vh]'>
+<div className='flex flex-col md:flex-row h-[100vh] lg:h-[100vh] md:h-[100vh] overflow-y-auto'>
     <article className='article-bgg w-full  md:w-1/2 lg:w-1/2 flex h-full flex-col justify-center items-center text-center'>
         <div className='article-content text-white flex flex-col gap-8 justify-center items-center h-full'>
             <h2 className='text-3xl'>Already have an account?</h2>

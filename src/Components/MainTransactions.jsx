@@ -84,76 +84,81 @@ const MainTransactions = () => {
                 progress: undefined,
                 theme: "dark",
                 transition: Bounce,
-                })
-                console.log('Transaction successful: ', response.data)
-            } catch (error) {
-                console.error('Error making transaction: ', error)
-                toast.error('Transaction failed. Please try again.', {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                    })
-                } finally {
-                    setLoading(false)
-                }
-            }
+            })
+            console.log('Transaction successful: ', response.data)
+        } catch (error) {
+            console.error('Error making transaction: ', error)
+            toast.error('Transaction failed. Please try again.', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            })
+        } finally {
+            setLoading(false)
+            setSelectedAccount('');
+            setDestinationAccount('');
+            setAmount('');
+            setDescription('');
+            setDestinationType('');
+        }
+    }
 
     return (
         <div className='bg-[#0C0C0C] flex flex-col text-center text-white article-transaction '>
             <h2 className='text-center font-bold text-3xl mb-4 mt-5'>Make a Transaction</h2>
             <form className='flex flex-col gap-8 ' onSubmit={handleSubmit}>
                 <div>
-                <label className='flex justify-center items-center gap-5'>
-                    <strong className='text-lg'>Destination Type :</strong>           
-                    <small className='text-lg'>Own</small>
-                    <input type="radio"  name='destinationType' value="own" checked={destinationType === 'own'} onChange={handleDestinationTypeChange} />
-                    <small className='text-lg'>Others</small>
-                    <input type="radio" name='destinationType' value="others" checked={destinationType === 'others'}  onChange={handleDestinationTypeChange} />
-                </label>
+                    <label className='flex justify-center items-center gap-5'>
+                        <strong className='text-lg'>Destination Type :</strong>
+                        <small className='text-lg'>Own</small>
+                        <input type="radio" name='destinationType' value="own" checked={destinationType === 'own'} onChange={handleDestinationTypeChange} />
+                        <small className='text-lg'>Others</small>
+                        <input type="radio" name='destinationType' value="others" checked={destinationType === 'others'} onChange={handleDestinationTypeChange} />
+                    </label>
                 </div>
                 <div className='flex flex-col gap-10'>
                     <label className=' flex flex-col gap-5 items-center justify-center '>
-                    <strong className='text-lg'>Origin Account:</strong>
-                    <select 
-                        name="account" 
-                        id="account-select" 
-                        className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2 '
-                        value={selectedAccount}
-                        onChange={handleAccountChange}
-                    >
-                    <option disabled hidden value="">Select Account</option>
-                    {client.map(account => (
-                        <option className='' key={account.number} value={account.number}>
-                            {account.number}
-                        </option>
-                    ))}
-                    </select>
+                        <strong className='text-lg'>Origin Account:</strong>
+                        <select
+                            name="account"
+                            id="account-select"
+                            className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2 '
+                            value={selectedAccount}
+                            onChange={handleAccountChange}
+                        >
+                            <option disabled hidden value="">Select Account</option>
+                            {client.map(account => (
+                                <option className='' key={account.number} value={account.number}>
+                                    {account.number}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Destination Account:</strong>
-                        <input className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Enter your destination account' value={destinationAccount}  onChange={handleDestinationAccountChange} required />
+                        <input className='text-center h-12 w-11/12  md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Enter your destination account' value={destinationAccount} onChange={handleDestinationAccountChange} required />
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Amount :</strong>
-                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' required type="number" placeholder='Enter your amount $:' min="0" value={amount}  onChange={handleAmountChange} />
+                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' required type="number" placeholder='Enter your amount $:' min="0" value={amount} onChange={handleAmountChange} />
                     </label>
                     <label className='flex flex-col gap-5 items-center justify-center'>
                         <strong className='text-lg'>Description :</strong>
-                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Description of transaction'  value={description}   onChange={handleDescriptionChange}  required />
+                        <input className='text-center h-12 w-11/12 md:w-2/4 md:h-8 lg:h-8 lg:w-2/4 focus-visible:ring-gray-700 text-sm rounded-md bg-slate-900 ml-2  ' type="text" placeholder='Description of transaction' value={description} onChange={handleDescriptionChange} required />
                     </label>
                 </div>
                 <div className='mb-5'>
-                <button  type='submit' className='rounded-md p-4 bg-gray-700 m-2 text-lg text-white cursor-pointer transition duration-200 ease-in-out hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95'>CONFIRM TRANSACTION</button>
+                    <button type='submit' className='rounded-md p-4 bg-gray-700 m-2 text-lg text-white cursor-pointer transition duration-200 ease-in-out hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95'>CONFIRM TRANSACTION</button>
                 </div>
             </form>
             <ToastContainer />
-            </div>
+        </div>
     )
 }
 

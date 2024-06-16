@@ -7,23 +7,22 @@ import Loan from './pages/Loan'
 import Transactions from './pages/Transactions'
 import AplayLoan from './pages/AplayLoan'
 import AplayNewCard from './pages/AplayNewCard'
-import Layout from './layouts/layout'
+import Layout from './layouts/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AccountSelect from './pages/AccountSelect'
 
 
-function App() {
 
+function App() {
   return (
-<BrowserRouter>
+    <BrowserRouter>
       <Routes>
         {/* Rutas para Login y Register */}
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
-
         {/* Rutas que usan el layout */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Accounts />} />
@@ -32,10 +31,10 @@ function App() {
           <Route path="Transactions" element={<Transactions />} />
           <Route path="AplayLoan" element={<AplayLoan />} />
           <Route path="AplayNewCard" element={<AplayNewCard />} />
-          <Route path='/AccountSelect/:id' element={<AccountSelect/>}/>
+          <Route path='/AccountSelect/:id' element={<AccountSelect />} />
         </Route>
       </Routes>
-      <ToastContainer/>
+      {/* <ToastContainer /> */}
     </BrowserRouter>
   )
 }

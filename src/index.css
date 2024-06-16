@@ -90,32 +90,32 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .article-bg {
-  background-image: url('public/assets/img/login-img.jpg');
+  background-image: url('/public/assets/img/login-img.jpg');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
-  background-position: center; /* Centra la imagen en el fondo */
+  background-position: center  ; /* Centra la imagen en el fondo */
 }
 
 .article-bgg {
-  background-image: url('public/assets/img/register-logo.jpeg');
+  background-image: url('/public/assets/img/register-logo.jpeg');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center; /* Centra la imagen en el fondo */
 }
 
 .article-transaction {
-  background-image: url('public/assets/img/banner-transaction.jpg');
+  background-image: url('/public/assets/img/banner-transaction.jpg');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center; /* Centra la imagen en el fondo */
 }
 
 .article-card {
-  background-image: url('public/assets/img/card-fond.png');
+  background-image: url('/public/assets/img/card-fond.png');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center; /* Centra la imagen en el fondo */
   
 }
 
 .article-aplyLoan {
-  background-image: url('public/assets/img/aplay-loan.png');
+  background-image: url('/public/assets/img/aplay-loan.png');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center top; /* Centra la imagen en el fondo */
   
@@ -142,12 +142,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .article-aplyCard {
-  background-image: url('public/assets/img/aply-card2.png');
+  background-image: url('/public/assets/img/aply-card2.png');
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center top  ; /* Centra la imagen en el fondo */
   
   
 }
+
 
 
 
