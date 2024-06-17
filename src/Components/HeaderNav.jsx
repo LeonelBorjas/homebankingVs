@@ -12,9 +12,9 @@ const HeaderNav = () => {
     }
 
     const anchors = [
-        { text: "Accounts", to: "/", img: "public/assets/img/Accounts.webp", activeIcon: activePage.Accounts },
-        { text: "Cards", to: "/Card", img: "public/assets/img/cards.webp", activeIcon: activePage.Cards },
-        { text: "DHUE BANK", to: "/", img: "/public/assets/img/penguin.jpg", activeIcon: activePage["DHUE BANK"], className: "w-15" },
+        { text: "Accounts", to: "/Accounts", img: "/public/assets/img/Accounts.webp", activeIcon: activePage.Accounts },
+        { text: "Cards", to: "/Card", img: "/public/assets/img/cards.webp", activeIcon: activePage.Cards },
+        { text: "DHUE BANK", to: "/Accounts", img: "/public/assets/img/penguin.jpg", activeIcon: activePage["DHUE BANK"], className: "w-15" },
         { text: "Loans", to: "/Loans", img: "/public/assets/img/loan.webp", activeIcon: activePage.Loans },
         { text: "Transactions", to: "/Transactions", img: "public/assets/img/transfer.webp", activeIcon: activePage.Transactions }
     ]

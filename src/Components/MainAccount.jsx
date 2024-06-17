@@ -17,8 +17,8 @@ const MainAccounts = () => {
     const [error, setError] = useState(null) // Variable de estado para almacenar los errores
 
     useEffect(() => {
-        fetchAccounts(); // Cargar cuentas cuando el componente se monte
-    }, []);
+        fetchAccounts() // Cargar cuentas cuando el componente se monte
+    }, [])
 
     const fetchAccounts = async () => {
         try {
@@ -26,11 +26,11 @@ const MainAccounts = () => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            });
-            setAccounts(response.data);
+            })
+            setAccounts(response.data)
         } catch (err) {
-            console.error('Error fetching data: ', err);
-            setError(err.message);
+            console.error('Error fetching data: ', err)
+            setError(err.message)
         }
     }
 
@@ -51,12 +51,10 @@ const MainAccounts = () => {
                 progress: undefined,
                 theme: "dark",
                 transition: Bounce,
-                })
-            // Actualizar el estado local sin hacer una nueva solicitud GET
-            setAccounts(prevAccounts => [...prevAccounts, response.data]); // Suponiendo que response.data contiene los detalles de la nueva cuenta creada
-
+            })
+            fetchAccounts()
         } catch (err) {
-            console.error('Error creating account: ', err);
+            console.error('Error creating account: ', err)
             toast.error('You exceed the limit number of accounts created.', {
                 position: "top-center",
                 autoClose: 2000,
@@ -67,14 +65,14 @@ const MainAccounts = () => {
                 progress: undefined,
                 theme: "dark",
                 transition: Bounce,
-                })
+            })
         }
     }
 
     const handleAccountClick = (accountId) => {
         navigate(`/AccountSelect/${accountId}`)
     }
-    
+
 
     return (
         <div className='flex flex-col flex-grow  justify-around items-center bg-[#0C0C0C] h-full text-white'>

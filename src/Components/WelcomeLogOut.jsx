@@ -56,7 +56,7 @@ const WelcomeLogOut = () => {
     }
     const handleLogout = () => {
         dispatch(logout())
-        navigate("/login")
+        navigate("/")
         successLogout()
     }
 
@@ -68,7 +68,7 @@ return (
             </picture>
             <h1 className='grow text-white font-bold'>Welcome, {client.firstName + " " +  client.lastName}</h1>
         </div>
-        <article className='w-20 h-full rounded-full object-cover flex items-center justify-center md:self-right cursor-pointer bg-red-500 border border-red-600'>
+        <article className='w-29 h-full rounded-full object-cover flex items-center justify-center md:self-right cursor-pointer bg-red-500 border border-red-600'>
             <p onClick={handleLogout} className='w-full text-center text-white text-sm font-bold'>Log out</p>
         </article>
     </div>

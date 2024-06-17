@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
 import Accounts from './pages/Accounts'
@@ -10,31 +10,78 @@ import AplayNewCard from './pages/AplayNewCard'
 import Layout from './layouts/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import AccountSelect from './pages/AccountSelect'
+import RoutesAuth from './HOCs/RoutesAuth'
+import RoutesNoAuth from './HOCs/RoutesNoAuth'
+import { Navigate } from 'react-router-dom'
 
+const routesAuth = [{
+  path: '/Accounts',
+  element: <Accounts />,
+  key: 'accounts',
+},
+{
+  path: '/Card',
+  element: <Card />,
+  key: 'card',
+},
+{
+  path: '/Loans',
+  element: <Loan />,
+  key: 'loan',
+},
+{
+  path: '/Transactions',
+  element: <Transactions />,
+  key: 'transactions',
+},
+{
+  path: '/AplayLoan',
+  element: <AplayLoan />,
+  key: 'aplayloan',
+},
+{
+  path: '/AplayNewCard',
+  element: <AplayNewCard />,
+  key: 'aplaynewcard',
+},
+{
+  path: '/AccountSelect/:id',
+  element: <AccountSelect />,
+  key: 'accountselect',
+}
+]
+const routesNoAuth = [{
+  path: '/',
+  element: <Login />,
+  key: 'login',
+},
+{
+  path: '/Register',
+  element: <Register />,
+  key: 'register',
 
+}
+]
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rutas para Login y Register */}
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
-        {/* Rutas que usan el layout */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Accounts />} />
-          <Route path="Card" element={<Card />} />
-          <Route path="Loans" element={<Loan />} />
-          <Route path="Transactions" element={<Transactions />} />
-          <Route path="AplayLoan" element={<AplayLoan />} />
-          <Route path="AplayNewCard" element={<AplayNewCard />} />
-          <Route path='/AccountSelect/:id' element={<AccountSelect />} />
-        </Route>
-      </Routes>
-      {/* <ToastContainer /> */}
+        <Route   element={<Layout />}>
+          {
+            routesAuth.map(RoutesAuth)
+          }
+          </Route>
+          {
+            
+            routesNoAuth.map(RoutesNoAuth)
+          }
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+      </Routes> 
+      <ToastContainer />
     </BrowserRouter>
   )
 }

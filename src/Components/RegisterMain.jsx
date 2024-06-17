@@ -15,7 +15,7 @@ const RegisterMain = () => {
     const navigate = useNavigate()
 
     const mensajeSuccess = () => {
-        toast.success('Login Success, Welcome', {
+        toast.success('Account Created successfully', {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -29,7 +29,7 @@ const RegisterMain = () => {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
 
         const registerDTO = { firstName, lastName, email, password }
 
@@ -38,7 +38,7 @@ const RegisterMain = () => {
 
             if (response.status === 201) {
                 mensajeSuccess()
-                navigate('/login')
+                navigate('/')
             } else {
                 toast.error('An account with this email address already exists. ', {
             position: "top-center",
@@ -88,7 +88,7 @@ const RegisterMain = () => {
         <div className='article-content text-white flex flex-col gap-8 justify-center items-center h-full'>
             <h2 className='text-3xl'>Already have an account?</h2>
             <p className='text-center text-lg'>Login with your account</p>
-            <Link className='text-blue-400 mb-5' to={"/Login"}>Log in</Link>
+            <Link className='text-blue-400 mb-5' to={"/"}>Log in</Link>
         </div>
     </article>
     <article className='text-center md:w-1/2 lg:w-1/2 h-full flex flex-col justify-center'>

@@ -32,7 +32,7 @@ const AplayLoanMain = () => {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
-                }) // Realizar la solicitud GET a la API para obtener los datos del cliente y sus cuentas bancarias
+                }) 
                 console.log(response.data) // Mostrar la respuesta en la consola
                 setClient(response.data) // Actualizar el estado del cliente con los datos recibidos
                 setAccounts(response.data.accounts) // Capturar el JSON en la variable de estado accounts
@@ -192,7 +192,7 @@ const AplayLoanMain = () => {
                                 <div className='flex flex-col gap-2'>
                                     <label className=''>
                                         <strong className='text-xl'> Enter Amount :</strong>
-                                        <input onChange={handleAmountChange}  className=" mt-3 bg-slate-900 w-full text-white rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Enter Amount $" type='number' min="0" max="500000" required />
+                                        <input onChange={handleAmountChange} className=" mt-3 bg-slate-900 w-full text-white rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Enter Amount $" type='number' min="0" max="500000" required />
                                     </label>
                                     <label>
                                         <small>Max Amount: USD $500,000.00</small>

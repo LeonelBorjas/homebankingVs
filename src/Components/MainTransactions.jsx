@@ -34,7 +34,7 @@ const MainTransactions = () => {
                 console.error('Error fetching data: ', err) // en caso de error mostramelo en la consola
                 setError(err.message)
             }
-        };
+        }
 
         fetchAccounts() // Llamar a la función fetchAccounts cuando el componente se monte
     }, [token]) // Es un array de dependencias
@@ -101,11 +101,11 @@ const MainTransactions = () => {
             })
         } finally {
             setLoading(false)
-            setSelectedAccount('');
-            setDestinationAccount('');
-            setAmount('');
-            setDescription('');
-            setDestinationType('');
+            setSelectedAccount('')
+            setDestinationAccount('')
+            setAmount('')
+            setDescription('')
+            setDestinationType('')
         }
     }
 
