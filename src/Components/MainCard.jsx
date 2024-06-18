@@ -80,7 +80,7 @@ const MainCard = () => {
                                 </div>
                                 <div className='flex justify-between items-end mt-2'>
                                     <p className="text-lg font-bold">{card.cardName}</p>
-                                    <img className='w-10 mt-2' src="public/assets/img/chip.png" alt="card chip" />
+                                    <img className='w-10 mt-2' src="/assets/img/chip.png" alt="card chip" />
                                 </div>
                             </div>
                         </div>

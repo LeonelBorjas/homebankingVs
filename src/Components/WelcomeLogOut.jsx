@@ -64,7 +64,7 @@ return (
     <div className='h-full w-full p-2 flex justify-evenly md:justify-center items-center gap-2 bg-black'>
         <div className='h-full w-full flex items-center justify-around gap-2'>
             <picture className='h-full grow object-cover flex items-center justify-end'>
-                <img className='w-16 object-cover rounded-full cursor-pointer' src="/public/assets/img/10015419.webp" alt="profile_foto" />
+                <img className='w-16 object-cover rounded-full cursor-pointer' src="/assets/img/10015419.webp" alt="profile_foto" />
             </picture>
             <h1 className='grow text-white font-bold'>Welcome, {client.firstName + " " +  client.lastName}</h1>
         </div>

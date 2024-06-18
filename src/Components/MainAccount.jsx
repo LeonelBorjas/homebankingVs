@@ -76,7 +76,7 @@ const MainAccounts = () => {
 
     return (
         <div className='flex flex-col flex-grow  justify-around items-center bg-[#0C0C0C] h-full text-white'>
-            <Banner banner="/public/assets/img/banner.png" />
+            <Banner banner="/assets/img/banner.png" />
             <div className='h-full w-full flex flex-col justify-center items-center'>
                 <div className='flex flex-wrap justify-around items-center gap-8 my-4'>
                     <div>
