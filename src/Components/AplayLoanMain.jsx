@@ -28,7 +28,7 @@ const AplayLoanMain = () => {
     useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
+                const response = await axios.get('https://dhuebank.onrender.com/api/clients/current/accounts', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -47,7 +47,7 @@ const AplayLoanMain = () => {
     useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
         const fetchLoans = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/loans', {
+                const response = await axios.get('https://dhuebank.onrender.com/api/loans', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -103,7 +103,7 @@ const AplayLoanMain = () => {
 
             console.log(loanData)
 
-            const response = await axios.post('http://localhost:8080/api/loans', loanData, {
+            const response = await axios.post('https://dhuebank.onrender.com/api/loans', loanData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

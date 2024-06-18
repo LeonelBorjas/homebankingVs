@@ -34,7 +34,7 @@ const RegisterMain = () => {
         const registerDTO = { firstName, lastName, email, password }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/register', registerDTO)
+            const response = await axios.post('https://dhuebank.onrender.com/api/auth/register', registerDTO)
 
             if (response.status === 201) {
                 mensajeSuccess()

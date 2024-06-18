@@ -21,7 +21,7 @@ const MainTransactions = () => {
     useEffect(() => {  //Peticion  //useEffect para que se ejecute solo una vez cuando se monte
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
+                const response = await axios.get('https://dhuebank.onrender.com/api/clients/current/accounts', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -69,7 +69,7 @@ const MainTransactions = () => {
                 amount: parseFloat(amount),
                 descriptions: description
             }
-            const response = await axios.post('http://localhost:8080/api/transactions', transactionData, {
+            const response = await axios.post('https://dhuebank.onrender.com/api/transactions', transactionData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

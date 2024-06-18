@@ -22,7 +22,7 @@ const MainAccounts = () => {
 
     const fetchAccounts = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/clients/current/accounts', {
+            const response = await axios.get('https://dhuebank.onrender.com/api/clients/current/accounts', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -36,7 +36,7 @@ const MainAccounts = () => {
 
     const handleCreateAccount = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/clients/current/account', {}, {
+            const response = await axios.post('https://dhuebank.onrender.com/api/clients/current/account', {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

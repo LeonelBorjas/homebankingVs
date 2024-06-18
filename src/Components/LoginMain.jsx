@@ -59,10 +59,10 @@ const LoginMain = () => {
             password: password
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/login', user);
+            const response = await axios.post('https://dhuebank.onrender.com/api/auth/login', user);
             let token = response.data
 
-            const responseCurrentClient = await axios.get("http://localhost:8080/api/auth/current", {
+            const responseCurrentClient = await axios.get("https://dhuebank.onrender.com/api/auth/current", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

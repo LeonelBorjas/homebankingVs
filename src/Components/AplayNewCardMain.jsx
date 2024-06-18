@@ -44,7 +44,7 @@ const AplayNewCardMain = () => {
 
         try {
             const response = await axios.post(
-                'http://localhost:8080/api/clients/cards',
+                'https://dhuebank.onrender.com/api/clients/cards',
                 { cardType, cardColor },
                 {
                     headers: {

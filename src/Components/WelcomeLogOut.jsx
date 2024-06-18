@@ -31,7 +31,7 @@ const WelcomeLogOut = () => {
     useEffect(() => {  //Peticion // Efecto secundario que se ejecuta cuando el componente se monta
         const fetchAccounts = async () => { // Función asíncrona para realizar la solicitud HTTP
             try {
-                const response = await axios.get('http://localhost:8080/api/auth/current', {
+                const response = await axios.get('https://dhuebank.onrender.com/api/auth/current', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

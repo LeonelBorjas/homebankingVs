@@ -18,7 +18,7 @@ const MainAccountSelect = () => {
         const fetchAccount = async () => {
             setLoading(true)
             try {
-                const response = await axios.get(`http://localhost:8080/api/clients/accounts/${id}`, {
+                const response = await axios.get(`https://dhuebank.onrender.com/api/clients/accounts/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
