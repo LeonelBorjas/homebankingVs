@@ -7,7 +7,6 @@ import Loan from './pages/Loan'
 import Transactions from './pages/Transactions'
 import AplayLoan from './pages/AplayLoan'
 import AplayNewCard from './pages/AplayNewCard'
-import Layout from './layouts/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { ToastContainer } from 'react-toastify'
@@ -15,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import AccountSelect from './pages/AccountSelect'
 import RoutesAuth from './HOCs/RoutesAuth'
 import RoutesNoAuth from './HOCs/RoutesNoAuth'
-import { Navigate } from 'react-router-dom'
+import Layout from './layouts/Layout'
 
 const routesAuth = [{
   path: '/Accounts',
@@ -79,7 +78,6 @@ function App() {
             
             routesNoAuth.map(RoutesNoAuth)
           }
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
       </Routes> 
       <ToastContainer />
     </BrowserRouter>
