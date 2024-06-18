@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import AccountSelect from './pages/AccountSelect'
 import RoutesAuth from './HOCs/RoutesAuth'
 import RoutesNoAuth from './HOCs/RoutesNoAuth'
-import Layout from './layouts/Layout'
+import Layout from './layouts/Layout';
 
 const routesAuth = [{
   path: '/Accounts',
