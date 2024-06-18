@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const login = createAction('LOGIN', (data /*informacion del usuario*/ ) =>{
+export const login = createAction('LOGIN', (data /*informacion del usuario*/ ) =>{ //simplifica la creación de acciones
     const clearData ={
         name: data.firstName + " " + data.lastName,
         email: data.email,
@@ -11,4 +11,4 @@ export const login = createAction('LOGIN', (data /*informacion del usuario*/ ) =
     return {payload: clearData}
 } )
 
-export const logout = createAction('LOGOUT')
+export const logout = createAction('LOGOUT') //simplifica la creación de acciones

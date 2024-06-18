@@ -13,7 +13,7 @@ const intialState = {
 }
 
 
-const authReducer = createReducer(intialState, (builder) => {
+const authReducer = createReducer(intialState, (builder) => { 
     builder.addCase(login, (state, action) => {
         return {
             ...state,
